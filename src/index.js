@@ -2,7 +2,7 @@
 
 const readline = require('readline');
 const process = require('process');
-const _ = require('lodash');
+import _  from 'lodash';
 const Bacon = require('baconjs');
 
 const commandTypeNames = {
@@ -10,7 +10,7 @@ const commandTypeNames = {
 	decrement: "decrement",
 	add: "add",
 	subtract: "subtract"
-}
+};
 
 const commandTypes = [
   {
@@ -58,7 +58,7 @@ function getCounterLogic(commandTypesNames) {
 		maxCounterValue: "maxCounterValue",
 		//The command was not recognized
 		commandNotRecognized: "commandNotRecognized"
-	}
+	};
 	
 	//Action functions
 	
@@ -110,17 +110,17 @@ function getCounterLogic(commandTypesNames) {
 	const canSubtractFromCounter = 
 		(counterValue, number) => verifyCounterRange(subtractFromCounter(counterValue));
 
-	//Creates a validation result
+	//Creates a result
 	const createResult = (eventType, errorType, message) => {
 		return { eventType, errorType, message };
 	};
 	
 	//Creates a success validation result
-	const createSuccessValidationResult = _.curry(createValidationResult)
-		(eventTypes.success, null, null);
+	const createSuccessValidationResult = _.curry(createResult)
+		(eventTypes.success, null);
 
 	//Creates an error validation result
-	const createErrorValidationResult = _.curry(createValidationResult)
+	const createErrorValidationResult = _.curry(createResult)
 		(eventTypes.error);
 		
 	//Receives a command stream and returns a response stream
@@ -145,33 +145,27 @@ function getCounterLogic(commandTypesNames) {
 			}
 			else if(result === -1) {
 				validationResult = createErrorValidationResult(
-					errorTypes.minValue,
-					`The counter cannot be smaller than ${minCounterValue}`);
+					errorTypes.minValue);
 			}
 			else {
 				validationResult = createErrorValidationResult(
-					errorTypes.maxValue,
-					`The counter cannot be larger than ${maxCounterValue}`);
+					errorTypes.maxValue);
 			}
 		}
 		else {
 			validationResult = createErrorValidationResult(
-				errorTypes.commandNotRecognized, 
-				`The '${command.type}' was not recognized`); 
+				errorTypes.commandNotRecognized); 
 		}
 		
 		return validationResult;
 	}
-
-	
 	
 	//Verifies that a value is within an inclusive number range.
 	//Returns -1 if the value is below the range, 0 if the value is within
 	//the range, and 1 if the value is above the range
 	function verifyWithinRange(value, minValue, maxValue) {
 		return (value >= minValue) && (value <= maxValue) ? 0 :
-			value < minValue ? -1 :
-			value > maxValue : 1;
+			value < minValue ? -1 : 1;
 	}
 
 	//Maps command types to their corresponding functions
@@ -202,7 +196,7 @@ function getCounterLogic(commandTypesNames) {
 //Curry functions that accept command types so that they don't have to
 //reference the command types directly
 const createCommandFromInput = _.curry(createCommand)(_, commandTypes);
-const getCounterLogicWithTypes = _.curry(getCounterLogic(commandTypeNames);
+const getCounterLogicWithTypes = _.curry(getCounterLogic(commandTypeNames))
 
 runCli();
 
