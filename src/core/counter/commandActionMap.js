@@ -1,3 +1,7 @@
+/**
+ * Contains a map between commands and action functions
+ */
+ 
 import actions from 'actions';
 
 //Maps command types to their corresponding action functions

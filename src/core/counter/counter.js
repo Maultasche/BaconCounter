@@ -2,6 +2,8 @@
  * Contains the core logic to interact with the counter
  */
 
+import commandActionMap from './commandActionMap';
+ 
 //The minimum-allowed counter value
 const minCounterValue = 0;
 
@@ -14,7 +16,7 @@ let counter = 0;
 //Receives a command stream and returns a response stream
 function processCommands(commandStream) {
 	commandStream.map(command => {
-
+		
 	});
 
 	//Transform the commands into validation results.

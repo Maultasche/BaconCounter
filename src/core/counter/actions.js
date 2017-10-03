@@ -1,16 +1,18 @@
+import R from 'ramda';
+
 //Action functions
 
 //Increments the counter
-const incrementCounter = counterValue => counterValue + 1;
+const incrementCounter = R.inc;
 
 //Decrements the counter
-const decrementCounter = counterValue => counterValue - 1;
+const decrementCounter = R.dec;
 
 //Adds a number to the counter
-const addToCounter = (counterValue, number) => counterValue + number;
+const addToCounter = R.add;
 	
 //Substracts a number from the counter
-const subtractFromCounter = (counterValue, number) => counterValue - number;
+const subtractFromCounter = R.subtract;
 
 const actions = {
 	incrementCounter,

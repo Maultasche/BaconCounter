@@ -1,3 +1,7 @@
+/**
+ * Defines the map that maps action commands to validation functions
+ */
+
 import commandTypeNames from '../commands/commandTypeNames';
 import counterValidation from './counterValidation';
 
