@@ -72,7 +72,7 @@ function createCounterValidation(minValue, maxValue) {
 	 * 0 if subtracting from the value leaves it within the range, and 1 if 
 	 * subtracting from the value would cause it to be above the range
 	 */
-	const canAddToCounter = R.pipe(actions.subtractFromCounter, verifyCounterRange);	
+	const canSubtractFromCounter = R.pipe(actions.subtractFromCounter, verifyCounterRange);	
 
 	const counterValidation = {
 		canIncrementCounter,

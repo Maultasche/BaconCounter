@@ -2,7 +2,7 @@
  * Validation result functionality
  */
 
-import R from 'rambda';
+import R from 'ramda';
  
 /**
  * Creates a result object

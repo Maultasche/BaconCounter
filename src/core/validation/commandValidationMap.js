@@ -3,14 +3,17 @@
  */
 
 import commandTypeNames from '../commands/commandTypeNames';
-import counterValidation from './counterValidation';
 
-//Maps command types to their corresponding validation functions
-const commandValidationMap = {
-	[commandTypeNames.increment]: counterValidation.canIncrementCounter,
-	[commandTypeNames.decrement]: counterValidation.canDecrementCounter,
-	[commandTypeNames.add]: counterValidation.canAddToCounter,
-	[commandTypeNames.subtract]: counterValidation.canSubtractFromCounter		
-};
+function createCommandValidationMap(counterValidation) {
+	//Maps command types to their corresponding validation functions
+	const commandValidationMap = {
+		[commandTypeNames.increment]: counterValidation.canIncrementCounter,
+		[commandTypeNames.decrement]: counterValidation.canDecrementCounter,
+		[commandTypeNames.add]: counterValidation.canAddToCounter,
+		[commandTypeNames.subtract]: counterValidation.canSubtractFromCounter		
+	};
+	
+	return commandValidationMap;
+}
 
-export default commandValidationMap;
+export default createCommandValidationMap;
