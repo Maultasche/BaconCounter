@@ -7,8 +7,8 @@ import R from 'ramda';
 import createCommandValidationMap from './commandValidationMap';
 import createCounterValidation from './counterValidation';
 import validationResult from './validationResult';
-import errorTypes from '../events/errorTypes';
-import errorMessages from '../events/errorMessages';
+import errorTypes from './errorTypes';
+import errorMessages from './errorMessages';
 
 const createErrorValidationResult = validationResult.createErrorValidationResult;
 const createSuccessValidationResult = validationResult.createSuccessValidationResult;

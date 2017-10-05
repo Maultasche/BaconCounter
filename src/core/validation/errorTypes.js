@@ -1,4 +1,6 @@
-//Enumerates the types of errors that can occur
+/**
+ * Enumerates the types of errors that can occur
+ */
 const errorTypes = {
 	//The command would cause the counter to go under the minimum allowed value
 	minCounterValue: "minCounterValue",
@@ -7,3 +9,5 @@ const errorTypes = {
 	//The command was not recognized
 	commandNotRecognized: "commandNotRecognized"
 };
+
+export default errorTypes;
