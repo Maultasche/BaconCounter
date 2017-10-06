@@ -31,7 +31,7 @@ describe("creating an event", () => {
 		expect(event.data).toBeNull();
 	});	
 	
-	test("create event function is curried", () => {
+	test("the create event function is curried", () => {
 		const testEventType = "Test Event Type";
 		const data = { value: 3 };
 		
