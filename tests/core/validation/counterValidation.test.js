@@ -57,25 +57,85 @@ function testCounterValidationWithValueRange(counterValue, minValue, maxValue) {
 		let counterValidation = createCounterValidation(mockActions, minValue, maxValue);
 		
 		//Tests the increment validator for this test configuration
-		test('testing increment validation for ${testDescriptor}', () => {	
+		test(`testing increment validation for ${testDescriptor}`, () => {	
 			//Calculate the expected result
 			const expectedResult = rangeComparisonValue(counterValue + 1, minValue, maxValue);
 			
 			expect(counterValidation.canIncrementCounter()).toBe(expectedResult);
 		});
 		
-		//TODO: Test decrementing
-		//TODO: Test adding 0
-		//TODO: Test adding 1
-		//TODO: Test adding 10
-		//TODO: Test adding 100
-		//TODO: Test subtracting 0
-		//TODO: Test subtracting 1
-		//TODO: Test subtracting 10
-		//TODO: Test subtracting 100
-	});	
-	
-	
+		//Tests the decrement validator for this test configuration
+		test(`testing decrement validation for ${testDescriptor}`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue - 1, minValue, maxValue);
+			
+			expect(counterValidation.canDecrementCounter()).toBe(expectedResult);
+		});
+		
+		//Tests the add validator for this test configuration when adding 0
+		test(`testing add validation for ${testDescriptor} when adding 0`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue + 0, minValue, maxValue);
+			
+			expect(counterValidation.canAddToCounter(0)).toBe(expectedResult);
+		});
+		
+		//Tests the add validator for this test configuration when adding 1
+		test(`testing add validation for ${testDescriptor} when adding 1`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue + 1, minValue, maxValue);
+			
+			expect(counterValidation.canAddToCounter(1)).toBe(expectedResult);
+		});
+
+		//Tests the add validator for this test configuration when adding 10
+		test(`testing add validation for ${testDescriptor} when adding 10`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue + 10, minValue, maxValue);
+			
+			expect(counterValidation.canAddToCounter(10)).toBe(expectedResult);
+		});
+		
+		//Tests the add validator for this test configuration when adding 100
+		test(`testing add validation for ${testDescriptor} when adding 100`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue + 100, minValue, maxValue);
+			
+			expect(counterValidation.canAddToCounter(100)).toBe(expectedResult);
+		});
+		
+		//Tests the subtract validator for this test configuration when subtracting 0
+		test(`testing subtract validation for ${testDescriptor} when subtracting 0`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue - 0, minValue, maxValue);
+			
+			expect(counterValidation.canSubtractFromCounter(0)).toBe(expectedResult);
+		});
+		
+		//Tests the subtract validator for this test configuration when subtracting 1
+		test(`testing subtract validation for ${testDescriptor} when subtracting 1`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue - 1, minValue, maxValue);
+			
+			expect(counterValidation.canSubtractFromCounter(1)).toBe(expectedResult);
+		});
+		
+		//Tests the subtract validator for this test configuration when subtracting 10
+		test(`testing subtract validation for ${testDescriptor} when subtracting 10`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue - 10, minValue, maxValue);
+			
+			expect(counterValidation.canSubtractFromCounter(10)).toBe(expectedResult);
+		});
+		
+		//Tests the subtract validator for this test configuration when subtracting 100
+		test(`testing subtract validation for ${testDescriptor} when subtracting 100`, () => {	
+			//Calculate the expected result
+			const expectedResult = rangeComparisonValue(counterValue - 100, minValue, maxValue);
+			
+			expect(counterValidation.canSubtractFromCounter(100)).toBe(expectedResult);
+		});
+	});		
 }
 
 /**
@@ -90,7 +150,7 @@ function createMockActions(counterValue) {
 		incrementCounter: R.partial(R.inc, [counterValue]),
 		decrementCounter: R.partial(R.dec, [counterValue]),
 		addToCounter: R.partial(R.add, [counterValue]),
-		subtractFromCounter: R.partial(R.add, [counterValue])
+		subtractFromCounter: R.partial(R.subtract, [counterValue])
 	};
 	
 	return actions;
