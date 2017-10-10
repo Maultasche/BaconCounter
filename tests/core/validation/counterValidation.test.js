@@ -12,31 +12,119 @@ import createCounterValidation from '../../../src/core/validation/counterValidat
 
 //This test suite tests ranges of positive numbers
 describe("testing the counter validation with a range of only positive numbers", () => {
-	//Test with a value in the middle of a range with only positive numbers
+	//Test with a value in the middle of the range
 	testCounterValidationWithValueRange(5, 1, 10);
-	// //Test with a value that is already below the range with only positive numbers
-	// testCounterValidationWithValueRange(-1, 1, 10);
-	// //Test with a value that is already above the range with only positive numbers
-	// testCounterValidationWithValueRange(12, 1, 10);
-	// //Test with a value at the low end of the range with only positive numbers
-	// testCounterValidationWithValueRange(1, 1, 10);
-	// //Test with a value at the high end of the range with only positive numbers
-	// testCounterValidationWithValueRange(10, 1, 10);
-
-	//TODO: Test with positive range where minValue === maxValue
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-1, 1, 10);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(12, 1, 10);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(1, 1, 10);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(10, 1, 10);
+	//Test with a value below a range where minValue === maxValue
+	testCounterValidationWithValueRange(4, 5, 5);
+	//Test with a value above a range where minValue === maxValue
+	testCounterValidationWithValueRange(6, 5, 5);
+	//Test with a value within a range where minValue === maxValue
+	testCounterValidationWithValueRange(5, 5, 5);
 });
 
-//TODO: Test with larger positive range (1, 100)
+//This test suite tests larger ranges of positive numbers
+describe("testing the counter validation with a larger range of only positive numbers", () => {
+	//Test with a value in the middle of the range
+	testCounterValidationWithValueRange(50, 1, 100);
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-1, 1, 100);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(101, 1, 100);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(1, 1, 100);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(100, 1, 100);
+	//Test with a value below a range where minValue === maxValue
+	testCounterValidationWithValueRange(49, 50, 50);
+	//Test with a value above a range where minValue === maxValue
+	testCounterValidationWithValueRange(51, 50, 50);
+	//Test with a value within a range where minValue === maxValue
+	testCounterValidationWithValueRange(50, 50, 50);
+});
 
-//TODO: Test with ranges that includes negative and positive values, also include
-//a test where the range is (0, 0)
+//This test suite tests ranges of numbers that include negative and positive values
+describe("testing the counter validation with a range that includes negative " +
+	"and positive numbers", () => {
+	//Test with a value in the middle of the range
+	testCounterValidationWithValueRange(0, -10, 10);
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-11, -10, 10);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(11, -10, 10);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(-10, -10, 10);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(10, -10, 10);
+	//Test with a value below a range where minValue === maxValue
+	testCounterValidationWithValueRange(-1, 0, 0);
+	//Test with a value above a range where minValue === maxValue
+	testCounterValidationWithValueRange(1, 0, 0);
+	//Test with a value within a range where minValue === maxValue
+	testCounterValidationWithValueRange(0, 0, 0);
+});
 
-//TODO: Test with a larger range that includes negative and positive values
+//This test suite tests larger ranges of numbers that include negative and positive values
+describe("testing the counter validation with a larger range that includes negative " +
+	"and positive numbers", () => {
+	//Test with a value in the middle of the range
+	testCounterValidationWithValueRange(0, -100, 100);
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-101, -100, 100);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(101, -100, 100);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(-100, -100, 100);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(100, -100, 100);
+});
 
-//TODO: Test with ranges of negative values, also include a test where 
-//minValue === maxValue and the number is negative
+//This test suite tests ranges of negative numbers
+describe("testing the counter validation with a range of only negative numbers", () => {
+	//Test with a value in the middle of the range
+	testCounterValidationWithValueRange(-5, -10, -1);
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-11, -10, -1);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(0, -10, -1);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(-10, -10, -1);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(-10, -10, -1);
+	//Test with a value below a range where minValue === maxValue
+	testCounterValidationWithValueRange(-6, -5, -5);
+	//Test with a value above a range where minValue === maxValue
+	testCounterValidationWithValueRange(-4, -5, -5);
+	//Test with a value within a range where minValue === maxValue
+	testCounterValidationWithValueRange(-5, -5, -5);
+});
 
-//TODO: Test with a larger range of negative values
+//This test suite tests larger ranges of negative numbers
+describe("testing the counter validation with a larger range of only negative numbers", () => {
+	//Test with a value in the middle of the range
+	testCounterValidationWithValueRange(-50, -100, -1);
+	//Test with a value that is already below the range
+	testCounterValidationWithValueRange(-101, -100, -1);
+	//Test with a value that is already above the range
+	testCounterValidationWithValueRange(0, -100, -1);
+	//Test with a value at the low end of the range
+	testCounterValidationWithValueRange(-100, -100, -1);
+	//Test with a value at the high end of the range
+	testCounterValidationWithValueRange(-100, -100, -1);
+	//Test with a value below a range where minValue === maxValue
+	testCounterValidationWithValueRange(-51, -50, -50);
+	//Test with a value above a range where minValue === maxValue
+	testCounterValidationWithValueRange(-49, -50, -50);
+	//Test with a value within a range where minValue === maxValue
+	testCounterValidationWithValueRange(-50, -50, -50);
+});
 
 
 /**
