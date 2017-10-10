@@ -2,17 +2,19 @@
  * Functions to perform counter value validation
  */
 
- import actions from '../counter/actions';
- 
+import R from 'ramda';
+
 /**
 * Retrieves functions that perform counter validation, detecting whether
 * changing the counter value is allowed.
+*
+* This function assumes that minValue <= maxValue.
 *
 * @param {number} minValue - The minimum allowable counter value
 * @param {number} maxValue - The maximum allowable counter value
 * @returns {Object} - An object containing the validation functions
 */
-function createCounterValidation(minValue, maxValue) {
+function createCounterValidation(actions, minValue, maxValue) {
 	/**
 	 * Verifies whether a value is within the allowed counter range
 	 */

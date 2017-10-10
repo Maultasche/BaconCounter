@@ -16,13 +16,15 @@ const createSuccessValidationResult = validationResult.createSuccessValidationRe
 /**
  * Creates a command validation object that enforces min and max values for the counter
  *
+ * This function assumes that minValue <= maxValue.
+ *
  * @param {number} minValue - The smallest allowed counter value
  * @param {number} maxValue - The largest allowed counter value
  * @returns {Object} An object containing the command validation functionality
  */
-function createCommandValidation(minValue, maxValue) {
+function createCommandValidation(actions, minValue, maxValue) {
 	//Create the counter validation logic
-	const counterValidation = createCounterValidation(minValue, maxValue);
+	const counterValidation = createCounterValidation(actions, minValue, maxValue);
 
 	//Create the command => validation function map
 	const commandValidationMap = createCommandValidationMap(counterValidation);
