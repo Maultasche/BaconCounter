@@ -7,8 +7,8 @@
  * similar groups of test configurations
  */
 
-import R from 'ramda';
 import createCounterValidation from '../../../src/core/validation/counterValidation';
+import mockData from './mockData'
 
 //This test suite tests ranges of positive numbers
 describe("testing the counter validation with a range of only positive numbers", () => {
@@ -141,7 +141,7 @@ function testCounterValidationWithValueRange(counterValue, minValue, maxValue) {
 		
 	//Tests the counter validation functionality for a particular test configuration
 	describe(testSuiteDescription, () => {
-		let mockActions = createMockActions(counterValue);
+		let mockActions = mockData.createMockActions(counterValue);
 		let counterValidation = createCounterValidation(mockActions, minValue, maxValue);
 		
 		//Tests the increment validator for this test configuration
@@ -224,24 +224,6 @@ function testCounterValidationWithValueRange(counterValue, minValue, maxValue) {
 			expect(counterValidation.canSubtractFromCounter(100)).toBe(expectedResult);
 		});
 	});		
-}
-
-/**
- * Mocks the action functions 
- *
- * @param {number} counterValue - The counter value the action functions 
- *	are to operate on
- * @returns {Object} The object containing the action functions
- */
-function createMockActions(counterValue) {
-	const actions = {
-		incrementCounter: R.partial(R.inc, [counterValue]),
-		decrementCounter: R.partial(R.dec, [counterValue]),
-		addToCounter: R.partial(R.add, [counterValue]),
-		subtractFromCounter: R.partial(R.subtract, [counterValue])
-	};
-	
-	return actions;
 }
 
 /**

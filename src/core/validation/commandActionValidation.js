@@ -1,5 +1,8 @@
 /**
- * Command Validation Functions
+ * Validation Functions that validate whether an action can be performed
+ *
+ * All these functions assume that the command object is a valid command object.
+ * To validate the command object, look at the command structure validation functions.
  */
 
 import R from 'ramda';
@@ -30,15 +33,14 @@ function createCommandValidation(actions, minValue, maxValue) {
 	const commandValidationMap = createCommandValidationMap(counterValidation);
 	
 	/**
-	 * Retrieves the command validation function that corresponds to a command
+	 * Retrieves the counter validation function that corresponds to a command
 	 *
 	 * @param {Object} command - A command object
 	 * @returns {Function} The command validation function or undefined of no validation
 	 * 	function could be found
 	 */
 	const getCommandValidationFunction = R.pipe(R.prop("type"), R.prop(R.__, commandValidationMap));
-
-	console.log(validationResult.createErrorValidationResult);
+	
 	/**
 	 * Creates a command-not-recognized validation result
 	 *
@@ -85,7 +87,7 @@ function createCommandValidation(actions, minValue, maxValue) {
 	 * result is created.
 	 *
 	 * @param {Function} validationFunction - A command validation function
-	 * @returns {Object} A validation result object
+	 * @returns {Function} A validation result function
 	 */
 	const createValidationResultFunction =  
 		R.ifElse(isFunction, 

@@ -11,10 +11,10 @@ import commandTypeNames from '../../../src/core/commands/commandTypeNames';
 //Create the mock counter validation functionality that will be used by the
 //command validation map
 const mockCounterValidation = {
-	canIncrementCounter: () => {},
-	canDecrementCounter: () => {},
-	canAddToCounter: () => {},
-	canSubtractFromCounter: () => {}
+	canIncrementCounter: () => { return "incrementCounter" },
+	canDecrementCounter: () => { return "decrementCounter" },
+	canAddToCounter: number => { return `addCounter ${number}` },
+	canSubtractFromCounter: number => { return `subtractCounter ${number}` }
 };
 
 /**
@@ -29,26 +29,46 @@ describe("verifying command to validation function mapping", () => {
 	});
 	
 	test('increment command is mapped to the increment counter validation', () => {
+		//Get the validation function
 		const validationFunction = commandValidationMap[commandTypeNames.increment];
+
+		//Call the validation function
+		const result = validationFunction({});
 		
-		expect(validationFunction).toBe(mockCounterValidation.canIncrementCounter);
+		//Verify that we received the expected result based on our mock function
+		expect(result).toBe("incrementCounter");
 	});
 	
 	test('decrement command is mapped to the decrement counter validation', () => {
+		//Get the validation function
 		const validationFunction = commandValidationMap[commandTypeNames.decrement];
+
+		//Call the validation function
+		const result = validationFunction({});
 		
-		expect(validationFunction).toBe(mockCounterValidation.canDecrementCounter);
+		//Verify that we received the expected result based on our mock function
+		expect(result).toBe("decrementCounter");
 	});
 	
 	test('add command is mapped to the add to counter validation', () => {
+		//Get the validation function
 		const validationFunction = commandValidationMap[commandTypeNames.add];
+
+		//Call the validation function
+		const result = validationFunction({number: 3});
 		
-		expect(validationFunction).toBe(mockCounterValidation.canAddToCounter);
+		//Verify that we received the expected result based on our mock function
+		expect(result).toBe("addCounter 3");
 	});
 
 	test('subtract command is mapped to the subtract from counter validation', () => {
+		//Get the validation function
 		const validationFunction = commandValidationMap[commandTypeNames.subtract];
+
+		//Call the validation function
+		const result = validationFunction({number: 4});
 		
-		expect(validationFunction).toBe(mockCounterValidation.canSubtractFromCounter);
+		//Verify that we received the expected result based on our mock function
+		expect(result).toBe("subtractCounter 4");
 	});	
 });

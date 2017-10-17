@@ -39,7 +39,6 @@ function createCounterValidation(actions, minValue, maxValue) {
 	/**
 	 * Indicates whether the counter value can be incremented
 	 *
-	 * @param {number} value - The value to be incremented
 	 * @returns -1 if incrementing the value would cause it to be below the range, 
 	 * 0 if incrementing the value leaves it within the range, and 1 if 
 	 * incrementing the value would cause it to be above the range
@@ -49,7 +48,6 @@ function createCounterValidation(actions, minValue, maxValue) {
 	/**
 	 * Indicates whether the counter value can be decremented
 	 *
-	 * @param {number} value - The value to be incremented
 	 * @returns -1 if decrementing the value would cause it to be below the range, 
 	 * 0 if decrementing the value leaves it within the range, and 1 if 
 	 * decrementing the value would cause it to be above the range
@@ -59,10 +57,11 @@ function createCounterValidation(actions, minValue, maxValue) {
 	/**
 	 * Indicates whether the counter value can be added to
 	 *
-	 * @param {number} value - The value to be added to
-	 * @returns -1 if adding to the value would cause it to be below the range, 
-	 * 0 if adding to the value leaves it within the range, and 1 if 
-	 * adding to the value would cause it to be above the range
+	 * @param {number} value - The value to be added to the counter
+	 * @returns -1 if adding the value to the counter would cause the counter
+	 * to be below the range, 0 if adding the value to the counter leaves the
+	 * counter within the range, and 1 if adding the value to the counter
+	 * would cause it to be above the range
 	 */
 	const canAddToCounter = R.pipe(actions.addToCounter, verifyCounterRange);	
 
@@ -70,9 +69,10 @@ function createCounterValidation(actions, minValue, maxValue) {
 	 * Indicates whether the counter value can be subtracted from
 	 *
 	 * @param {number} value - The value to be subtracted from
-	 * @returns -1 if subtracting from the value would cause it to be below the range, 
-	 * 0 if subtracting from the value leaves it within the range, and 1 if 
-	 * subtracting from the value would cause it to be above the range
+	 * @returns -1 if subtracting the value from the counter would cause the counter
+	 * to be below the range, 0 if subtracting the value from the counter leaves the
+	 * counter within the range, and 1 if subtracting the value from the counter
+	 * would cause it to be above the range
 	 */
 	const canSubtractFromCounter = R.pipe(actions.subtractFromCounter, verifyCounterRange);	
 
